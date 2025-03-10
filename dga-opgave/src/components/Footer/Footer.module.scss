@@ -1,0 +1,102 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background: $primary;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  font-family: $font;
+  font-weight: 300;
+}
+
+.footerSection {
+  width: 30%;
+  text-align: left;
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-weight: 300;
+  }
+
+  p {
+    font-size: 14px;
+    color: $black;
+    margin-bottom: 8px;
+  }
+
+  a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 300;
+  }
+}
+
+.newsletterForm {
+  display: flex;
+  align-items: center;
+
+  input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid $primary;
+    font-size: 14px;
+    height: 40px; 
+    box-sizing: border-box;
+  }
+
+  button {
+    padding: 8px 15px;
+    border: none;
+    background: $secondary; 
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+    height: 40px; 
+    box-sizing: border-box;
+
+    &:hover {
+      background: darken($secondary, 10%);
+    }
+  }
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+}
+
+.modalContent p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: $black;
+}
+
+.modalContent button {
+  background: $primary;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}

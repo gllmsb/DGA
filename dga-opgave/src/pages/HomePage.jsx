@@ -5,6 +5,7 @@ import { SectionWrapper } from '../components/SectionWrapper/SectionWrapper'
 import { RandomProducts } from '../components/RandomProducts/RandomProducts'
 import { Banner } from '../components/Banner/Banner'
 import { RandomCategories } from '../components/RandomCategories/RandomCategories'
+import { DonationBanner } from '../components/DontationBanner/DonationBanner'
 
 export const HomePage = () => {
   return (
@@ -24,6 +25,9 @@ export const HomePage = () => {
       <RandomCategories />
     </SectionWrapper>
     <HorizontalLine />
+    <SectionWrapper>
+      <DonationBanner />
+    </SectionWrapper>
     </>
   )
 }
