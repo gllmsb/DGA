@@ -4,6 +4,7 @@ import { Title } from '../components/Title/Title'
 import { SectionWrapper } from '../components/SectionWrapper/SectionWrapper'
 import { RandomProducts } from '../components/RandomProducts/RandomProducts'
 import { Banner } from '../components/Banner/Banner'
+import { RandomCategories } from '../components/RandomCategories/RandomCategories'
 
 export const HomePage = () => {
   return (
@@ -16,6 +17,11 @@ export const HomePage = () => {
     <HorizontalLine />
     <SectionWrapper>
       <Banner />
+    </SectionWrapper>
+    <HorizontalLine />
+    <SectionWrapper>
+      <Title text="Populære Kategorier" />
+      <RandomCategories />
     </SectionWrapper>
     <HorizontalLine />
     </>

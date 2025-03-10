@@ -1,0 +1,56 @@
+@use "../../styles/variables" as *;
+
+.categorySection {
+  width: 1000px;
+  margin: 0 auto 0 -23px;
+}
+
+.categoryGrid {
+  display: flex;
+  gap: 10px;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+  height: 150px;
+}
+
+.categoryNameContainer {
+    width: 150px;
+    height: 40px;
+    background-color: $primary;
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: $font;
+  
+    a { 
+      color: white; 
+      text-decoration: underline; 
+      display: block; 
+      width: 100%;
+      height: 100%;
+      line-height: 30px; 
+    }
+  }
+  
+  
+
+.imageContainer {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
