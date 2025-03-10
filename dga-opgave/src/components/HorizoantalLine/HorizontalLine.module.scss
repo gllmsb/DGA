@@ -1,0 +1,8 @@
+@use "../../styles/variables" as *;
+
+.line {
+  width: 1000px; 
+  height: 3px; 
+  background-color: $secondary; 
+  margin: 0 auto;
+}

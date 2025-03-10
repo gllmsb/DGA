@@ -1,0 +1,10 @@
+@use "../../styles/variables" as *;
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  color: $black;
+  margin-bottom: 15px;
+  font-family: $font;
+  margin-left: -20px;
+}

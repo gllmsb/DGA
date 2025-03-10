@@ -1,0 +1,63 @@
+@use "../../styles/variables" as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: $white2;
+  border-bottom: 2px solid #ddd;
+  margin-bottom: 80px;
+}
+
+.logo {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: $font;
+  border: 2px solid $secondary;
+
+  .greenPart {
+    background-color: $secondary;
+    color: $white2;
+    padding: 5px 10px;
+  }
+
+  .whitePart {
+    background: none;
+    color: $secondary;
+    padding: 5px 10px;
+  }
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+}
+
+.createAdBtn {
+  background: $primary;
+  color: $white2;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.icon {
+  display: flex;
+  gap: 10px; 
+
+  img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
