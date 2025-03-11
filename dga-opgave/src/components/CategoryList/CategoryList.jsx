@@ -34,11 +34,14 @@ export const CategoryList = () => {
     <div className={styles.categorySection}>
       <div className={styles.productGrid}>
         {currentProducts.map((product) => (
-          <Link key={product.id} to={`/product/${product.id}`} className={styles.productCard}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p className={styles.description}>{product.description}</p>
-          </Link>
+          <Link 
+          key={product.id} 
+          to={`/product/${product.slug}?category=${categorySlug}`} 
+          className={styles.productCard}
+        >
+          <img src={product.image} alt={product.name} />
+          <h3>{product.name}</h3>
+        </Link>        
         ))}
       </div>
 

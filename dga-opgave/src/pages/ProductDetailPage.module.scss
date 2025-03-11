@@ -1,0 +1,10 @@
+@use "../styles/variables" as *;
+
+.productDetailPage {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1470px;
+  margin: 50px auto;
+}
