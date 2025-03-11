@@ -1,0 +1,30 @@
+@use "../../styles/variables" as *;
+
+.sidebar {
+  width: 200px;
+  font-family: $font;
+
+  h3 {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 3px;
+      font-size: 16px;
+
+      a {
+        text-decoration: none;
+        color: $black;
+      }
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
