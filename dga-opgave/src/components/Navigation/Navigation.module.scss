@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding: 10px 20px;
   background: $white2;
   border-bottom: 2px solid #ddd;
   margin-bottom: 80px;
@@ -48,6 +48,7 @@
 
 .icon {
   display: flex;
+  margin-top: 20px;
   gap: 10px; 
 
   img {
