@@ -53,7 +53,6 @@ export const Footer = ({ isLoggedIn }) => {
         </a>
       </div>
 
-      {/* Full-Screen Modal for Login Requirement */}
       {showModal && (
         <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>

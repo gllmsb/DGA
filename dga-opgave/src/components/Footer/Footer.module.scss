@@ -16,10 +16,13 @@
   text-align: left;
 
   h3 {
-    font-size: 20px;
-    margin-bottom: 25px;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: left !important;
+    color: white;
     font-weight: 300;
   }
+  
 
   p {
     font-size: 14px;
@@ -49,6 +52,7 @@
 
   button {
     padding: 8px 15px;
+    margin-top: -20px;
     border: none;
     background: $secondary; 
     color: white;
@@ -57,9 +61,10 @@
     transition: background 0.3s;
     height: 40px; 
     box-sizing: border-box;
+    border-radius: 0px !important; 
 
     &:hover {
-      background: darken($secondary, 10%);
+      background: $secondary;
     }
   }
 }
@@ -80,9 +85,9 @@
 .modalContent {
   background: white;
   padding: 20px;
-  border-radius: 8px;
   text-align: center;
   max-width: 300px;
+  border-radius: 5px;
 }
 
 .modalContent p {
