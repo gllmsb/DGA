@@ -3,12 +3,12 @@
 .productContainer {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   text-align: left;
   width: 100%;
-  max-width: 1000px; 
-  margin: 0px auto 0 -3px;
-  padding-bottom: 20px; 
+  max-width: 800px;
+  margin: 0 auto 0 135px; 
+  padding-bottom: 20px;
   font-family: $font;
 }
 

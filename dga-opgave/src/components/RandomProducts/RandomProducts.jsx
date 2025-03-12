@@ -21,7 +21,7 @@ export const RandomProducts = () => {
     <div className={styles.productSection}>
       <div className={styles.productGrid}>
         {products.map((product) => (
-          <Link key={product.id} to={`/product/${product.id}`} className={styles.productCard}>
+          <Link key={product.id} to={`/product/${product.slug}`} className={styles.productCard}>
             <img src={product.image} alt={product.name} />
             <div className={styles.overlay}>{product.name}</div> 
           </Link>

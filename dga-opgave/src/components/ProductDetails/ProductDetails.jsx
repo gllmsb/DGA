@@ -56,7 +56,7 @@ export const ProductDetails = ({ productSlug }) => {
       <div className={styles.productInfo}>
         <h2>{product.name || "Ingen navn"}</h2>
         <p className={styles.description}>{product.description || "Ingen beskrivelse"}</p>
-        <p className={styles.price}>{product.price ? `${product.price} kr.` : "Ukendt pris"}</p>
+        <p className={styles.price}>Pris: {product.price ? `${product.price} kr.` : "Ukendt pris"}</p>
       </div>
     </div>
   );

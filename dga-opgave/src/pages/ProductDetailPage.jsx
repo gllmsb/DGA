@@ -3,6 +3,8 @@ import styles from "./ProductDetailPage.module.scss";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { ProductDetails } from "../components/ProductDetails/ProductDetails";
 import { HorizontalLine } from "../components/HorizoantalLine/HorizontalLine";
+import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
+import { CommentSection } from "../components/CommentSecrion/CommentSection";
 
 
 export const ProductDetailPage = () => {
@@ -22,6 +24,9 @@ export const ProductDetailPage = () => {
       <ProductDetails productSlug={productSlug} />
     </div>
     <HorizontalLine />
+    <SectionWrapper>
+      <CommentSection />
+    </SectionWrapper>
   </>
   );
 };
