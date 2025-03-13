@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
-import styles from "./Navigation.module.scss"; 
+import { useContext } from "react";
+
+import styles from "./Navigation.module.scss";
 import { CategoryDropdown } from "../CategoryDropdown/CategoryDropdown";
 import mail from "../../assets/icons/mail.png";
 import info from "../../assets/icons/info-squared.png";
 import account from "../../assets/icons/account.png";
+import { UserContext } from "../../context/UserContext";
 
 export const Navigation = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <nav className={styles.nav}>
       <Link to="/" className={styles.logo}>
@@ -19,7 +24,15 @@ export const Navigation = () => {
         <div className={styles.icon}>
           <img src={mail} alt="mail" />
           <img src={info} alt="info" />
-          <img src={account} alt="account" />
+          {user ? (
+            <Link to="/profile">
+              <img src={account} alt="account" />
+            </Link>
+          ) : (
+            <Link to="/login">
+              <img src={account} alt="account" />
+            </Link>
+          )}
         </div>
       </div>
     </nav>

@@ -24,7 +24,7 @@ export const CommentSection = () => {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
-        <button onClick={handleSendComment}>Send</button>
+        <button className={styles.commentBtn} onClick={handleSendComment}>Send</button>
       </div>
 
       {showModal && (

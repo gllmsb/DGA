@@ -6,10 +6,12 @@ import { ProductDetailPage } from "./pages/ProductDetailPage";
 import { LoginPage } from "./pages/LoginPage";
 import { ProfilePage } from "./pages/ProfilePage";
 import { MainLayout } from "./layouts/MainLayout";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <Router>
+      <UserProvider>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
@@ -20,6 +22,7 @@ function App() {
           <Route path="*" element={<div>404 Error Page Not Found </div>} />
         </Route>
       </Routes>
+    </UserProvider>
     </Router>
   );
 }

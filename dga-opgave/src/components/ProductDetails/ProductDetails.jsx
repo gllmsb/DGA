@@ -52,7 +52,7 @@ export const ProductDetails = ({ productSlug }) => {
 
   return (
     <div className={styles.productContainer}>
-      <img src={product.image || "fallback-image.jpg"} alt={product.name || "Produkt"} />
+      <img className={styles.productImage} src={product.image || "fallback-image.jpg"} alt={product.name || "Produkt"} />
       <div className={styles.productInfo}>
         <h2>{product.name || "Ingen navn"}</h2>
         <p className={styles.description}>{product.description || "Ingen beskrivelse"}</p>

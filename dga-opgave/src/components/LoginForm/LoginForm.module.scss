@@ -1,0 +1,81 @@
+@use "../../styles/variables" as *;
+
+.loginContainer {
+  width: 100%;
+  max-width: 450px;
+  margin: 60px auto;
+  text-align: center;
+  font-family: $font;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: $black;
+}
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  padding: 10px 40px 10px 15px; 
+  border: 2px solid $primary;
+  font-size: 16px;
+  background: #f8f8f8;
+}
+
+input:focus {
+  outline: none;
+  border-color: darken($primary, 10%);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  background: $secondary;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: flex-end;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
