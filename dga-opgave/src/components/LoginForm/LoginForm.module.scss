@@ -12,6 +12,7 @@ h2 {
   font-size: 28px;
   font-weight: 400;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .loginForm {
@@ -43,10 +44,10 @@ input {
 
 input:focus {
   outline: none;
-  border-color: darken($primary, 10%);
+  border-color: $secondary;
 }
 
-.icon {
+.inputIcon {
   position: absolute;
   top: 50%;
   right: 12px;

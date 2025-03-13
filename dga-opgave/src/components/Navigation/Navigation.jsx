@@ -8,8 +8,11 @@ import info from "../../assets/icons/info-squared.png";
 import account from "../../assets/icons/account.png";
 import { UserContext } from "../../context/UserContext";
 
+
 export const Navigation = () => {
   const { user } = useContext(UserContext);
+
+  console.log("Current User:", user);
 
   return (
     <nav className={styles.nav}>
@@ -24,15 +27,9 @@ export const Navigation = () => {
         <div className={styles.icon}>
           <img src={mail} alt="mail" />
           <img src={info} alt="info" />
-          {user ? (
-            <Link to="/profile">
-              <img src={account} alt="account" />
-            </Link>
-          ) : (
-            <Link to="/login">
-              <img src={account} alt="account" />
-            </Link>
-          )}
+          <Link to={user ? "/profile" : "/login"}>
+            <img src={account} alt="account" />
+          </Link>
         </div>
       </div>
     </nav>

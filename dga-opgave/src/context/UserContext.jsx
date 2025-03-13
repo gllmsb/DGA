@@ -5,63 +5,40 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate(); 
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUser(storedUser);
+    const storedUser = sessionStorage.getItem("user");
+    const storedToken = sessionStorage.getItem("token");
+
+    if (storedUser && storedToken) {
+      setUser(JSON.parse(storedUser));
+      console.log("User restored from sessionStorage:", JSON.parse(storedUser));
     }
   }, []);
 
   useEffect(() => {
     if (user) {
-      console.log("User state updated, navigating to /profile...");
-      navigate("/profile"); 
+      console.log("Saving user to sessionStorage:", user);
+      sessionStorage.setItem("user", JSON.stringify(user));
     }
   }, [user]);
 
-  const login = async (email, password) => {
-    try {
-      console.log("Attempting login...");
-      console.log("Sending credentials:", { email, password });
-
-      const response = await fetch("http://localhost:4242/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify({ username: email, password }),
-      });
-
-      console.log("Request Sent...");
-      console.log("Response Status:", response.status);
-
-      const data = await response.json();
-      console.log("Parsed Response Body:", data);
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed!");
-      }
-
-      if (data.access_token) {
-        console.log("Login Success!");
-        localStorage.setItem("token", data.access_token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        setUser(data.user); 
-      }
-    } catch (error) {
-      console.error("Login Error:", error.message);
-      alert(error.message);
-    }
+  const login = (userData, token) => {
+    console.log("Logging in user:", userData);
+    setUser(userData);
+    sessionStorage.setItem("user", JSON.stringify(userData));
+    sessionStorage.setItem("token", token);
   };
 
-  const logout = () => {
+  const logout = (navigate) => {
+    console.log("Logging out...");
     setUser(null);
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-    navigate("/");
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("token");
+    
+    if (navigate) {
+      navigate("/login");
+    }
   };
 
   return (

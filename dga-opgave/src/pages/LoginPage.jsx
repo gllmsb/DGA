@@ -1,28 +1,27 @@
-import { useContext } from "react";
-import { UserContext } from "../context/UserContext";
-import { LoginForm } from "../components/LoginForm/LoginForm";
-import styles from "./LoginPage.module.scss";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HorizontalLine } from "../components/HorizoantalLine/HorizontalLine";
+import { SectionWrapper } from "../components/SectionWrapper/SectionWrapper";
+import { UserContext } from "../context/UserContext";
+import { LoginForm } from "../components/LoginForm/LoginForm";
 
 export const LoginPage = () => {
-  const { user, logout } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/profile");
+    }
+  }, [user, navigate]);
 
   return (
     <>
     <HorizontalLine />
-    <div className={styles.pageContainer}>
-      {!user ? (
-        <LoginForm />
-      ) : (
-        <div className={styles.profileContainer}>
-          <h2>Min Profil</h2>
-          <p>Velkommen, {user.firstname} {user.lastname}</p>
-          <button onClick={() => logout(navigate)}>Log Out</button>
-        </div>
-      )}
-    </div>
+    <SectionWrapper>
+      {!user ? <LoginForm  /> : null} 
+    </SectionWrapper>
+    
     </>
   );
 };
