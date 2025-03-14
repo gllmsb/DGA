@@ -1,23 +1,17 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { useState} from "react";
 
+import styles from "./ProfilePage.module.scss";
+import { ProfileTabs } from "../components/ProfileTabs/ProfileTabs";
+import { ProfileDetails } from "../components/ProfileDetails/ProfileDetails";
 
 export const ProfilePage = () => {
-  const { user, logout } = useContext(UserContext);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout(navigate);
-  };
-
+  const [activeTab, setActiveTab] = useState("profile");
   return (
-    <div>
-      <h2>Min Profil</h2>
-      <p>Velkommen, {user?.firstname} {user?.lastname}!</p>
-      <p>Email: {user?.email}</p>
+    <div className={styles.profilePage}>
+      <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <button className={StyleSheet.logoutBtn} onClick={handleLogout}>Log ud</button>
+      {activeTab === "profile" ? <ProfileDetails /> : <p>Mine annoncer kommer her...</p>}
+
     </div>
   );
 };

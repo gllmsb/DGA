@@ -1,0 +1,125 @@
+@use "../../styles/variables" as *;
+
+.profileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  width: 1000px;
+  margin: 30px auto 60px;
+}
+
+.profileForm {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftSection {
+  flex: 1;
+  min-width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: 2px solid $primary;
+  font-size: 16px;
+  background: #f8f8f8;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: $secondary;
+}
+
+.rightSection {
+  flex: 1;
+  min-width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.check {
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  border: 2px solid $primary;
+  background-color: white;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  padding: 0;
+  margin: 5px;
+}
+
+.check:checked {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.check:checked::before {
+  content: "✔";
+  font-size: 10px;
+  color: white;
+  position: absolute;
+  left: 2px;
+  top: -1px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.deleteButton {
+  background-color: #8b2c17;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+}
+
+.saveButton {
+  background-color: #008037;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+}
+
+.logoutButton {
+  background-color: #026928;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+  text-align: center;
+}

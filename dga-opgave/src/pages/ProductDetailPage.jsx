@@ -25,7 +25,7 @@ export const ProductDetailPage = () => {
     </div>
     <HorizontalLine />
     <SectionWrapper>
-      <CommentSection />
+      <CommentSection productSlug={productSlug} />
     </SectionWrapper>
   </>
   );

@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Footer.module.scss";
 
-export const Footer = ({ isLoggedIn }) => {
+export const Footer = () => {
   const [email, setEmail] = useState("");
+  const [modalMessage, setModalMessage] = useState(""); 
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
 
   const handleNewsletterSignup = (e) => {
     e.preventDefault();
+
     if (!isLoggedIn) {
-      setShowModal(true); 
+      setModalMessage("Du skal være logget ind for at tilmelde dig nyhedsbrevet.");
+      setShowModal(true);
       return;
     }
-    alert("Du er tilmeldt nyhedsbrevet!");
+
+    setTimeout(() => {
+      setModalMessage("Du er nu tilmeldt nyhedsbrevet!");
+      setShowModal(true);
+      setEmail(""); 
+    }, 1000); 
   };
 
   return (
@@ -56,7 +70,7 @@ export const Footer = ({ isLoggedIn }) => {
       {showModal && (
         <div className={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <p>Du skal være logget ind for at tilmelde dig nyhedsbrevet.</p>
+            <p>{modalMessage}</p>
             <button onClick={() => setShowModal(false)}>Luk</button>
           </div>
         </div>
