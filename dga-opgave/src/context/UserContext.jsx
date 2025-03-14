@@ -7,38 +7,28 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("user");
+    const storedUser = sessionStorage.getItem("userData");
     const storedToken = sessionStorage.getItem("token");
 
     if (storedUser && storedToken) {
-      setUser(JSON.parse(storedUser));
-      console.log("User restored from sessionStorage:", JSON.parse(storedUser));
+      const parsedUser = JSON.parse(storedUser);
+      console.log("Restoring User:", parsedUser);
+      setUser(parsedUser);
     }
   }, []);
 
-  useEffect(() => {
-    if (user) {
-      console.log("Saving user to sessionStorage:", user);
-      sessionStorage.setItem("user", JSON.stringify(user));
-    }
-  }, [user]);
-
   const login = (userData, token) => {
     console.log("Logging in user:", userData);
-    setUser(userData);
-    sessionStorage.setItem("user", JSON.stringify(userData));
+    sessionStorage.setItem("userData", JSON.stringify(userData));
     sessionStorage.setItem("token", token);
+    setUser(userData);
   };
 
-  const logout = (navigate) => {
+  const logout = () => {
     console.log("Logging out...");
-    setUser(null);
-    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("userData");
     sessionStorage.removeItem("token");
-    
-    if (navigate) {
-      navigate("/login");
-    }
+    setUser(null);
   };
 
   return (

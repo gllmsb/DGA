@@ -28,18 +28,24 @@
   flex-direction: column;
 }
 
-.inputField {
+.profileField{
   width: 100%;
   height: 50px;
   padding: 10px;
-  border: 2px solid $primary;
+  border: 2px solid $secondary;
   font-size: 16px;
   background: #f8f8f8;
 }
 
-.inputField:focus {
+.profileField:focus {
   outline: none;
-  border-color: $secondary;
+  border-color: $black;
+}
+
+.profileLabel {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
 }
 
 .rightSection {
@@ -77,7 +83,7 @@
 }
 
 .check:checked::before {
-  content: "✔";
+  content: "";
   font-size: 10px;
   color: white;
   position: absolute;

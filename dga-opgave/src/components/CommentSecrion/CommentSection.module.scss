@@ -47,11 +47,10 @@ textarea {
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
   align-self: flex-end; 
   
   &:hover {
-    background: darken($primary, 10%);
+    background: $secondary;
   }
 }
 

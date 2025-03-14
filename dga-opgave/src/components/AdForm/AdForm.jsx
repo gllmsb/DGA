@@ -16,6 +16,7 @@ export const AdForm = () => {
   const [categories, setCategories] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:4242/categories")
@@ -35,9 +36,45 @@ export const AdForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (formData.title.trim() === "") {
+      newErrors.title = "Titel er påkrævet!";
+    }
+
+    if (formData.category === "") {
+      newErrors.category = "Vælg en kategori!";
+    }
+
+    if (formData.description.trim() === "") {
+      newErrors.description = "Beskrivelse er påkrævet!";
+    }
+
+    if (formData.price.trim() === "" || isNaN(formData.price) || Number(formData.price) <= 0) {
+      newErrors.price = "Indtast en gyldig pris!";
+    }
+
+    if (formData.imageUrl.trim() !== "") {
+      const urlRegex = /\.(jpg|jpeg|png|webp|gif)$/i;
+      if (!urlRegex.test(formData.imageUrl)) {
+        newErrors.imageUrl = "Indtast en gyldig billed-URL (jpg, png, webp, gif)!";
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user) {
+
+    if (!validateForm()) {
+      return;
+    }
+
+    const token = sessionStorage.getItem("token");
+    if (!user || !token) {
       alert("Du skal være logget ind for at oprette en annonce.");
       return;
     }
@@ -48,15 +85,15 @@ export const AdForm = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           title: formData.title,
-          category: formData.category,
+          category_id: formData.category, 
           description: formData.description,
-          imageUrl: formData.imageUrl,
+          image: formData.imageUrl,
           price: formData.price,
-          userId: user.id, 
+          user_id: user.id,
         }),
       });
 
@@ -76,6 +113,10 @@ export const AdForm = () => {
         price: "",
       });
 
+      setTimeout(() => {
+        setShowSuccessModal(false);
+        window.location.href = "/profile";
+      }, 2000);
     } catch (error) {
       console.error("Error:", error);
       alert(`Error: ${error.message}`);
@@ -98,7 +139,9 @@ export const AdForm = () => {
           placeholder="Titel for produkt..."
           required
         />
+        {errors.title && <p className={styles.error}>{errors.title}</p>}
 
+        {/* Category Dropdown */}
         <label>Kategori</label>
         <div className={styles.dropdownContainer}>
           <select
@@ -109,14 +152,16 @@ export const AdForm = () => {
           >
             <option value="">Hvilken kategori tilhører dit produkt...</option>
             {categories.map((category) => (
-              <option key={category.id} value={category.slug}>
+              <option key={category.id} value={category.id}>
                 {category.name}
               </option>
             ))}
           </select>
           <IoIosArrowDown className={styles.arrowIcon} />
         </div>
+        {errors.category && <p className={styles.error}>{errors.category}</p>}
 
+        {/* Description */}
         <label>Annonce Tekst</label>
         <textarea
           name="description"
@@ -125,7 +170,9 @@ export const AdForm = () => {
           placeholder="Skriv en annonce tekst her der beskriver produktet"
           required
         />
+        {errors.description && <p className={styles.error}>{errors.description}</p>}
 
+        {/* Image URL */}
         <label>URL til billede</label>
         <input
           type="text"
@@ -134,7 +181,9 @@ export const AdForm = () => {
           onChange={handleChange}
           placeholder="Har du et billede som ligger på nettet kan du indsætte en URL her...."
         />
+        {errors.imageUrl && <p className={styles.error}>{errors.imageUrl}</p>}
 
+        {/* Price */}
         <label>Pris</label>
         <input
           type="number"
@@ -144,12 +193,15 @@ export const AdForm = () => {
           placeholder="Pris..."
           required
         />
+        {errors.price && <p className={styles.error}>{errors.price}</p>}
 
+        {/* Submit Button */}
         <button type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Opretter..." : "Opret"}
         </button>
       </form>
 
+      {/* Success Modal */}
       {showSuccessModal && (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>

@@ -4,7 +4,7 @@
   display: flex;
   width: 1000px;
   margin: 0 auto;
-  border: 2px solid $primary;
+  border: 2px solid $secondary;
 }
 
 .tab {
@@ -18,7 +18,7 @@
   cursor: pointer;
 
   &.active {
-    background: $primary;
+    background: $secondary;
     color: white;
   }
 }
